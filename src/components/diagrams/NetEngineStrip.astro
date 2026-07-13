@@ -1,0 +1,93 @@
+---
+const stages = [
+  { label: 'Authenticated request', detail: 'Gin API boundary' },
+  { label: 'Serialized worker', detail: 'Controlled operation queue' },
+  { label: 'Persistent connection', detail: 'RouterOS session reuse' },
+] as const;
+---
+
+<div class="architecture-strip" aria-label="NetEngine architecture summary">
+  <p class="visually-hidden">
+    An authenticated request enters a serialized worker before using a persistent RouterOS
+    connection.
+  </p>
+  <ol>
+    {
+      stages.map((stage, index) => (
+        <li>
+          <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <strong>{stage.label}</strong>
+            <small>{stage.detail}</small>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<style>
+  .architecture-strip ol {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .architecture-strip li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3);
+    align-items: center;
+    min-width: 0;
+    padding: var(--space-3);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 22%, var(--color-border));
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-surface-soft) 56%, var(--color-surface));
+  }
+
+  .architecture-strip li > span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .architecture-strip li div {
+    display: grid;
+    min-width: 0;
+  }
+
+  .architecture-strip strong {
+    font-size: var(--step--1);
+  }
+
+  .architecture-strip small {
+    overflow: hidden;
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 48rem) {
+    .architecture-strip ol {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .architecture-strip li {
+      position: relative;
+    }
+
+    .architecture-strip li:not(:last-child)::after {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      right: calc(var(--space-2) * -1 - 1px);
+      width: calc(var(--space-2) + 2px);
+      height: 1px;
+      background: var(--color-accent);
+      content: '';
+    }
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import SiteFooter from '../components/core/SiteFooter.astro';
+import plexSansUrl from '../assets/fonts/ibm-plex-sans-variable.woff2?url';
 import SiteHeader from '../components/core/SiteHeader.astro';
 import SeoHead from '../components/core/SeoHead.astro';
 import { site } from '../data/site';
@@ -26,7 +27,8 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="theme-color" content="#f6f7f4" />
+    <meta name="theme-color" content="#f4f3ef" />
+    <link rel="preload" href={plexSansUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
     <SeoHead title={title} description={description} canonicalPath={canonicalPath} type={type} />
   </head>

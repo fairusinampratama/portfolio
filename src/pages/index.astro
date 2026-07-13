@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import ButtonLink from '../components/core/ButtonLink.astro';
 import SectionHeading from '../components/core/SectionHeading.astro';
-import NetEngineArchitecture from '../components/diagrams/NetEngineArchitecture.astro';
 import ProjectCard from '../components/work/ProjectCard.astro';
 import SupportingProject from '../components/work/SupportingProject.astro';
 import { capabilities } from '../data/capabilities';
@@ -71,13 +70,12 @@ const secondaryProjects = work.slice(1);
         description="Four focused case studies show complementary evidence across product delivery, monitoring, billing, migration, document integrity, and deployment."
       />
       <div class="work-grid">
-        {leadProject && <ProjectCard entry={leadProject} lead />}
+        {leadProject && <ProjectCard entry={leadProject} variant="lead" />}
         <div class="work-grid__secondary">
           {secondaryProjects.map((entry) => <ProjectCard entry={entry} />)}
         </div>
         <SupportingProject item={supportingWork} />
       </div>
-      <NetEngineArchitecture />
     </div>
   </section>
 
@@ -115,7 +113,7 @@ const secondaryProjects = work.slice(1);
       <div class="capability-grid">
         {
           capabilities.map((group) => (
-            <article class="capability card">
+            <article class="capability">
               <h3>{group.title}</h3>
               <ul>
                 {group.items.map((item) => (
@@ -136,7 +134,7 @@ const secondaryProjects = work.slice(1);
         title="Structured communication beyond application code"
         description="Organizational work adds evidence of documentation, mentoring, coordination, and responsibility."
       />
-      <article class="leadership card">
+      <article class="leadership">
         <p class="eyebrow">{leadership.organization}</p>
         <h3>{leadership.roles.join(' \u00b7 ')}</h3>
         <p>{leadership.summary}</p>
@@ -165,7 +163,7 @@ const secondaryProjects = work.slice(1);
 
 <style>
   .hero {
-    padding-block: clamp(var(--space-8), 10vw, var(--space-10));
+    padding-block: clamp(4.5rem, 8vw, 7rem);
   }
 
   .hero__grid,
@@ -178,32 +176,34 @@ const secondaryProjects = work.slice(1);
 
   .hero__content {
     align-content: center;
-    max-width: 49rem;
+    max-width: 47rem;
+    gap: var(--space-5);
   }
 
   .hero h1 {
-    max-width: 13ch;
+    max-width: 12ch;
+    font-weight: 650;
   }
 
   .hero__positioning {
-    max-width: 36ch;
-    font-size: var(--step-2);
-    font-weight: 750;
+    max-width: 31ch;
+    font-size: var(--step-3);
+    font-weight: 600;
     line-height: 1.3;
   }
 
   .hero__proof {
     align-content: start;
-    padding: clamp(var(--space-5), 4vw, var(--space-7));
-    border: 1px solid var(--color-border);
+    padding: clamp(var(--space-5), 3vw, var(--space-6));
+    border: 1px solid color-mix(in srgb, var(--color-accent) 20%, var(--color-border));
     border-radius: var(--radius-lg);
-    background: var(--color-surface);
-    box-shadow: var(--shadow-soft);
+    background: var(--color-surface-soft);
+    box-shadow: var(--shadow-emphasis);
   }
 
   .hero__proof ul {
     display: grid;
-    gap: var(--space-5);
+    gap: var(--space-4);
     padding: 0;
     list-style: none;
   }
@@ -211,6 +211,10 @@ const secondaryProjects = work.slice(1);
   .hero__proof li {
     display: grid;
     gap: var(--space-1);
+  }
+  .hero__proof li + li {
+    padding-top: var(--space-4);
+    border-top: 1px solid color-mix(in srgb, var(--color-accent) 16%, var(--color-border));
   }
 
   .hero__proof span,
@@ -254,9 +258,20 @@ const secondaryProjects = work.slice(1);
     margin-top: var(--space-1);
   }
 
-  .capability,
-  .leadership {
+  .capability-grid {
+    overflow: hidden;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--color-surface-soft) 40%, var(--color-surface));
+  }
+
+  .capability {
     padding: var(--space-6);
+  }
+
+  .capability + .capability {
+    border-top: 1px solid var(--color-border);
   }
 
   .capability ul {
@@ -271,6 +286,16 @@ const secondaryProjects = work.slice(1);
   .contact__inner {
     display: grid;
     gap: var(--space-6);
+  }
+
+  .leadership-grid {
+    padding-block: var(--space-7);
+    border-block: 1px solid var(--color-border);
+  }
+
+  .leadership {
+    padding-left: var(--space-6);
+    border-left: 2px solid var(--color-accent);
   }
 
   .leadership h3 {
@@ -293,15 +318,35 @@ const secondaryProjects = work.slice(1);
     gap: var(--space-3);
   }
 
-  .contact .button--secondary {
-    border-color: #c6d8d6;
+  .contact :global(.button:not(.button--secondary)) {
+    border-color: white;
+    background: white;
+    color: var(--color-text);
+  }
+
+  .contact :global(.button:not(.button--secondary):hover) {
+    border-color: var(--color-surface-soft);
+    background: var(--color-surface-soft);
+  }
+
+  .contact :global(.button--secondary) {
+    border-color: #9eb6b3;
+    color: white;
+  }
+
+  .contact :global(.button--secondary:hover) {
+    border-color: white;
+    background: rgb(255 255 255 / 8%);
     color: white;
   }
 
   @media (min-width: 48rem) {
-    .work-grid__secondary,
-    .capability-grid {
+    .work-grid__secondary {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .work-grid__secondary > :global(:last-child:nth-child(odd)) {
+      grid-column: 1 / -1;
     }
 
     .timeline__item {
@@ -312,14 +357,18 @@ const secondaryProjects = work.slice(1);
 
   @media (min-width: 72rem) {
     .hero__grid {
-      grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+      grid-template-columns: minmax(0, 1.42fr) minmax(18rem, 0.58fr);
       align-items: center;
-      gap: var(--space-9);
+      gap: var(--space-8);
     }
 
-    .work-grid__secondary,
     .capability-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .capability + .capability {
+      border-top: 0;
+      border-left: 1px solid var(--color-border);
     }
 
     .leadership-grid,

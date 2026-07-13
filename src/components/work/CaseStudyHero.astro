@@ -35,7 +35,12 @@ const { entry } = Astro.props;
 
 <style>
   .case-hero {
-    padding-block: var(--space-7) clamp(var(--space-8), 8vw, var(--space-10));
+    padding-block: var(--space-7) clamp(var(--space-8), 6vw, var(--space-9));
+    background: linear-gradient(
+      180deg,
+      var(--color-bg),
+      color-mix(in srgb, var(--color-surface-soft) 34%, var(--color-bg))
+    );
     border-bottom: 1px solid var(--color-border);
   }
 
@@ -60,9 +65,9 @@ const { entry } = Astro.props;
   .case-hero__rail {
     align-content: start;
     padding: var(--space-5);
-    border: 1px solid var(--color-border);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 18%, var(--color-border));
     border-radius: var(--radius-md);
-    background: var(--color-surface);
+    background: color-mix(in srgb, var(--color-surface-soft) 58%, var(--color-surface));
   }
 
   .case-hero__rail strong {

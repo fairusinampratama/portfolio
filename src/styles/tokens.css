@@ -1,21 +1,23 @@
 :root {
   color-scheme: light;
-  --color-bg: #f6f7f4;
+  --color-bg: #f4f3ef;
   --color-surface: #ffffff;
-  --color-surface-soft: #edf5f3;
-  --color-text: #142126;
-  --color-muted: #56666d;
-  --color-border: #d8e0de;
-  --color-accent: #0f6b72;
-  --color-accent-strong: #0a5157;
-  --color-focus: #087f8c;
-  --color-live: #237a4b;
-  --color-live-bg: #eaf6ef;
-  --color-deployed: #35679a;
-  --color-deployed-bg: #edf4fb;
-  --color-limited: #8b5a12;
-  --color-limited-bg: #fff6df;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --color-surface-soft: #e8f1ef;
+  --color-text: #132126;
+  --color-muted: #526269;
+  --color-border: #d4ddda;
+  --color-accent: #0c6870;
+  --color-accent-strong: #084f55;
+  --color-focus: #067b87;
+  --color-live: #226b45;
+  --color-live-bg: #e5f2e9;
+  --color-deployed: #315f8c;
+  --color-deployed-bg: #eaf1f8;
+  --color-limited: #7d510f;
+  --color-limited-bg: #fbf1d8;
+  --font-sans:
+    'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
   --step-0: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
@@ -35,8 +37,9 @@
   --space-10: 8rem;
   --radius-sm: 0.4rem;
   --radius-md: 0.75rem;
-  --radius-lg: 1.1rem;
-  --shadow-soft: 0 16px 42px rgb(20 33 38 / 7%);
+  --radius-lg: 0.9rem;
+  --shadow-soft: none;
+  --shadow-emphasis: 0 20px 50px rgb(19 33 38 / 8%);
   --container: 76rem;
   --reading: 46rem;
   --rail: 16rem;

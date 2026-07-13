@@ -1,5 +1,13 @@
 @import './tokens.css';
 
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-sans-variable.woff2') format('woff2-variations');
+}
+
 *,
 *::before,
 *::after {
@@ -101,7 +109,7 @@ ol {
 }
 
 .section {
-  padding-block: clamp(var(--space-8), 8vw, var(--space-10));
+  padding-block: clamp(3.5rem, 6vw, var(--space-9));
 }
 
 .section--bordered {
@@ -133,6 +141,8 @@ ol {
 
 .prose h2 {
   margin-top: var(--space-8);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .prose h3 {
@@ -191,7 +201,7 @@ ol {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
 }
 
 .tags {

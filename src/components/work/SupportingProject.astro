@@ -1,6 +1,7 @@
 ---
 import type { supportingWork } from '../../data/supporting-work';
 import TagList from '../core/TagList.astro';
+import NetEngineStrip from '../diagrams/NetEngineStrip.astro';
 
 interface Props {
   item: typeof supportingWork;
@@ -9,22 +10,25 @@ interface Props {
 const { item } = Astro.props;
 ---
 
-<article class="supporting card">
+<article class="supporting">
   <div>
     <p class="eyebrow">{item.label}</p>
     <h3>{item.title}</h3>
   </div>
   <p>{item.summary}</p>
-  <TagList items={item.technologies} />
-  <a href={item.repository}>Inspect public repository <span aria-hidden="true">&rarr;</span></a>
+  <NetEngineStrip />
+  <div class="supporting__footer">
+    <TagList items={item.technologies.slice(0, 4)} />
+    <a href={item.repository}>Inspect public repository <span aria-hidden="true">&rarr;</span></a>
+  </div>
 </article>
 
 <style>
   .supporting {
     display: grid;
     gap: var(--space-5);
-    padding: clamp(var(--space-5), 4vw, var(--space-7));
-    border-left: 0.3rem solid var(--color-accent);
+    padding-block: clamp(var(--space-6), 4vw, var(--space-8));
+    border-block: 1px solid var(--color-border);
   }
 
   .supporting h3 {
@@ -36,15 +40,29 @@ const { item } = Astro.props;
     color: var(--color-muted);
   }
 
-  .supporting > a {
+  .supporting__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .supporting__footer > a {
     width: fit-content;
-    font-weight: 750;
+    font-weight: 700;
   }
 
   @media (min-width: 72rem) {
     .supporting {
-      grid-template-columns: 0.8fr 1.5fr 1fr auto;
-      align-items: center;
+      grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+      align-items: start;
+      column-gap: var(--space-8);
+    }
+
+    .supporting > :global(.architecture-strip),
+    .supporting__footer {
+      grid-column: 1 / -1;
     }
   }
 </style>

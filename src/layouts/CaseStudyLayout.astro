@@ -45,15 +45,15 @@ const { entry, nextEntry } = Astro.props;
   .case-body {
     display: grid;
     gap: var(--space-8);
-    padding-block: clamp(var(--space-8), 8vw, var(--space-10));
+    padding-block: clamp(var(--space-8), 6vw, var(--space-9));
   }
 
   .case-rail {
     align-self: start;
-    padding: var(--space-5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
+    padding: var(--space-5) 0 var(--space-5) var(--space-5);
+    border-left: 2px solid var(--color-accent);
+    border-radius: 0;
+    background: transparent;
   }
 
   .case-rail ul {
@@ -79,7 +79,7 @@ const { entry, nextEntry } = Astro.props;
   .next-project a {
     width: fit-content;
     font-size: var(--step-1);
-    font-weight: 800;
+    font-weight: 700;
   }
 
   @media (min-width: 72rem) {
