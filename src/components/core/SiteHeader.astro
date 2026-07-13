@@ -23,9 +23,26 @@ const navItems = [
         type="button"
         aria-expanded="false"
         aria-controls="site-navigation"
+        aria-label="Open navigation menu"
         data-menu-button
       >
-        Menu
+        <svg
+          class="menu-button__icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="20"
+          height="20"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+        <span class="visually-hidden">Menu</span>
       </button>
       <nav id="site-navigation" aria-label="Primary navigation" data-menu>
         <ul>
@@ -139,14 +156,19 @@ const navItems = [
 
   .menu-button {
     display: none;
-    min-height: 2.75rem;
-    padding: 0.5rem 0.8rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     background: var(--color-surface);
     color: var(--color-text);
-    font: inherit;
-    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .menu-button__icon {
+    display: block;
+    margin: auto;
   }
 
   @media (max-width: 47.99rem) {
@@ -155,8 +177,8 @@ const navItems = [
     }
 
     [data-navigation][data-enhanced='true'] .menu-button {
-      display: inline-flex;
-      align-items: center;
+      display: inline-grid;
+      place-items: center;
     }
 
     [data-navigation][data-enhanced='true'] nav {
