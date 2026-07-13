@@ -1,0 +1,121 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../../lib/paths';
+import StatusBadge from '../core/StatusBadge.astro';
+import TagList from '../core/TagList.astro';
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+  lead?: boolean;
+}
+
+const { entry, lead = false } = Astro.props;
+const href = withBase(`/work/${entry.id}/`);
+---
+
+<article class:list={['project-card', 'card', lead && 'project-card--lead']}>
+  <div class="project-card__meta">
+    <p class="eyebrow">{entry.data.domain}</p>
+    <StatusBadge status={entry.data.status} />
+  </div>
+  <div class="project-card__body">
+    <div>
+      <h3><a href={href}>{entry.data.displayTitle}</a></h3>
+      <p>{entry.data.summary}</p>
+    </div>
+    <p class="claim">{entry.data.professionalClaim}</p>
+    <TagList items={entry.data.technologies.slice(0, lead ? 7 : 5)} />
+  </div>
+  <a
+    class="project-card__link"
+    href={href}
+    aria-label={`Read the ${entry.data.displayTitle} case study`}
+  >
+    Read case study <span aria-hidden="true">?</span>
+  </a>
+</article>
+
+<style>
+  .project-card {
+    display: grid;
+    min-height: 100%;
+    gap: var(--space-6);
+    padding: clamp(var(--space-5), 4vw, var(--space-7));
+  }
+
+  .project-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .project-card__body {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .project-card h3 {
+    font-size: var(--step-2);
+  }
+
+  .project-card h3 a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .project-card h3 a::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+  }
+
+  .project-card {
+    position: relative;
+    transition:
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .project-card:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+    transform: translateY(-2px);
+  }
+
+  .project-card__body > div p,
+  .claim {
+    margin-top: var(--space-3);
+    color: var(--color-muted);
+  }
+
+  .claim {
+    padding-left: var(--space-4);
+    border-left: 3px solid var(--color-accent);
+    color: var(--color-text);
+  }
+
+  .project-card__link {
+    position: relative;
+    z-index: 1;
+    width: fit-content;
+    font-weight: 750;
+  }
+
+  @media (min-width: 72rem) {
+    .project-card--lead {
+      grid-template-columns: minmax(12rem, 0.65fr) 1.35fr;
+      align-items: start;
+    }
+
+    .project-card--lead .project-card__meta {
+      align-content: start;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .project-card--lead .project-card__link {
+      grid-column: 2;
+    }
+  }
+</style>

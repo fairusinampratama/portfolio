@@ -1,0 +1,18 @@
+---
+import FlowDiagram from './FlowDiagram.astro';
+
+const steps = [
+  { title: 'Verify', detail: 'Run automated tests and the frontend production build.' },
+  { title: 'Package', detail: 'Create one immutable release artifact.' },
+  { title: 'Protect', detail: 'Back up the database before changing the active release.' },
+  { title: 'Release', detail: 'Upload and activate the new release through an atomic switch.' },
+  { title: 'Check', detail: 'Run application health verification.' },
+  { title: 'Recover', detail: 'Return to the previous release when verification fails.' },
+] as const;
+---
+
+<FlowDiagram
+  title="CI/CD and atomic deployment"
+  description="A release is verified and packaged before deployment, then protected by backup, health checking, and rollback."
+  steps={steps}
+/>

@@ -1,0 +1,28 @@
+---
+import ButtonLink from '../components/core/ButtonLink.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The requested page does not exist in Fairus In?am Pratama?s portfolio."
+  canonicalPath="/404.html"
+>
+  <section class="section">
+    <div class="container not-found">
+      <p class="eyebrow">404</p>
+      <h1>Page not found</h1>
+      <p class="lede">The address may have changed, or the page may no longer be available.</p>
+      <ButtonLink href={withBase('/')}>Return to the portfolio</ButtonLink>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    max-width: 46rem;
+    gap: var(--space-5);
+  }
+</style>

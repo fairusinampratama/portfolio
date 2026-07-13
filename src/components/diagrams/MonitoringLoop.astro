@@ -1,0 +1,21 @@
+---
+import FlowDiagram from './FlowDiagram.astro';
+
+const steps = [
+  { title: 'Schedule', detail: 'Laravel dispatches recurring customer and server checks.' },
+  { title: 'Observe', detail: 'The check records status and relevant connectivity information.' },
+  { title: 'Classify', detail: 'Isolation state distinguishes planned conditions from outages.' },
+  {
+    title: 'Present',
+    detail: 'Administrative and display views show the current operational picture.',
+  },
+  { title: 'Report', detail: 'Stored state supports scheduled WhatsApp summaries.' },
+  { title: 'Retain', detail: 'Pruning and indexes keep historical queries bounded and useful.' },
+] as const;
+---
+
+<FlowDiagram
+  title="Monitoring and reporting loop"
+  description="Scheduled observations become current status, operational views, reports, and bounded history."
+  steps={steps}
+/>

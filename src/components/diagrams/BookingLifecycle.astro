@@ -1,0 +1,27 @@
+---
+import FlowDiagram from './FlowDiagram.astro';
+
+const steps = [
+  { title: 'Discover', detail: 'Choose language, package, route, date, and traveller count.' },
+  {
+    title: 'Validate',
+    detail: 'Apply availability and pricing rules; divert custom groups to consultation.',
+  },
+  { title: 'Request', detail: 'Store customer, trip, voucher, and pricing snapshots.' },
+  {
+    title: 'Confirm',
+    detail: 'Operations verify availability and prepare payment or an adjusted quote.',
+  },
+  { title: 'Pay', detail: 'Midtrans updates the recorded payment state.' },
+  {
+    title: 'Communicate',
+    detail: 'Email and WhatsApp carry requests and receipts from stored booking state.',
+  },
+] as const;
+---
+
+<FlowDiagram
+  title="Booking lifecycle"
+  description="Public choices become an operational record with explicit validation, payment, and communication steps."
+  steps={steps}
+/>

@@ -1,0 +1,97 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CaseStudyHero from '../components/work/CaseStudyHero.astro';
+import EvidenceGallery from '../components/work/EvidenceGallery.astro';
+import { withBase } from '../lib/paths';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+  nextEntry: CollectionEntry<'work'>;
+}
+
+const { entry, nextEntry } = Astro.props;
+---
+
+<BaseLayout
+  title={entry.data.seo.title}
+  description={entry.data.seo.description}
+  canonicalPath={`/work/${entry.id}/`}
+  type="article"
+>
+  <CaseStudyHero entry={entry} />
+  <div class="container case-body">
+    <article class="prose">
+      <slot />
+      <EvidenceGallery evidence={entry.data.evidence} />
+    </article>
+    <aside class="case-rail" aria-label="Capabilities demonstrated">
+      <p class="eyebrow">Capabilities demonstrated</p>
+      <ul>
+        {entry.data.capabilities.map((capability) => <li>{capability}</li>)}
+      </ul>
+    </aside>
+  </div>
+  <nav class="container next-project" aria-label="Next case study">
+    <span>Next case study</span>
+    <a href={withBase(`/work/${nextEntry.id}/`)}>
+      {nextEntry.data.displayTitle}
+      <span aria-hidden="true">?</span>
+    </a>
+  </nav>
+</BaseLayout>
+
+<style>
+  .case-body {
+    display: grid;
+    gap: var(--space-8);
+    padding-block: clamp(var(--space-8), 8vw, var(--space-10));
+  }
+
+  .case-rail {
+    align-self: start;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .case-rail ul {
+    margin-top: var(--space-4);
+  }
+
+  .case-rail li + li {
+    margin-top: var(--space-2);
+  }
+
+  .next-project {
+    display: grid;
+    gap: var(--space-2);
+    padding-block: var(--space-7);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .next-project > span {
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  .next-project a {
+    width: fit-content;
+    font-size: var(--step-1);
+    font-weight: 800;
+  }
+
+  @media (min-width: 72rem) {
+    .case-body {
+      grid-template-columns: minmax(0, var(--reading)) var(--rail);
+      justify-content: space-between;
+      gap: var(--space-8);
+    }
+
+    .case-rail {
+      position: sticky;
+      top: 6rem;
+    }
+  }
+</style>

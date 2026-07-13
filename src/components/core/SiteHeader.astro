@@ -1,0 +1,196 @@
+---
+import { site } from '../../data/site';
+import { withBase } from '../../lib/paths';
+
+const navItems = [
+  ['Work', '/#selected-work'],
+  ['Experience', '/#experience'],
+  ['Capabilities', '/#capabilities'],
+  ['Leadership', '/#leadership'],
+  ['Contact', '/#contact'],
+] as const;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={withBase('/')} aria-label={`${site.name} home`}>
+      <span aria-hidden="true">FI</span>
+      <span class="brand-name">{site.name}</span>
+    </a>
+    <div class="navigation" data-navigation>
+      <button
+        class="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-navigation"
+        data-menu-button
+      >
+        Menu
+      </button>
+      <nav id="site-navigation" aria-label="Primary navigation" data-menu>
+        <ul>
+          {
+            navItems.map(([label, href]) => (
+              <li>
+                <a href={withBase(href)}>{label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const navigation = document.querySelector<HTMLElement>('[data-navigation]');
+  const button = navigation?.querySelector<HTMLButtonElement>('[data-menu-button]');
+  const menu = navigation?.querySelector<HTMLElement>('[data-menu]');
+
+  if (navigation && button && menu) {
+    navigation.dataset.enhanced = 'true';
+
+    const close = (restoreFocus = false) => {
+      button.setAttribute('aria-expanded', 'false');
+      navigation.dataset.open = 'false';
+      if (restoreFocus) button.focus();
+    };
+
+    button.addEventListener('click', () => {
+      const willOpen = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(willOpen));
+      navigation.dataset.open = String(willOpen);
+    });
+
+    menu.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) close();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+        close(true);
+      }
+    });
+
+    window.matchMedia('(min-width: 48rem)').addEventListener('change', (event) => {
+      if (event.matches) close();
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    z-index: 20;
+    top: 0;
+    border-bottom: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-bg) 96%, transparent);
+  }
+
+  .header-inner,
+  .brand,
+  nav ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-inner {
+    min-height: 4.5rem;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .brand {
+    gap: var(--space-3);
+    color: var(--color-text);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .brand > span:first-child {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border-radius: var(--radius-sm);
+    background: var(--color-text);
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+  }
+
+  .brand-name {
+    display: none;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    color: var(--color-text);
+    font-size: var(--step--1);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .menu-button {
+    display: none;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    font-weight: 700;
+  }
+
+  @media (max-width: 47.99rem) {
+    nav ul {
+      justify-content: flex-end;
+    }
+
+    [data-navigation][data-enhanced='true'] .menu-button {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    [data-navigation][data-enhanced='true'] nav {
+      position: absolute;
+      top: calc(100% + 1px);
+      right: 0;
+      left: 0;
+      display: none;
+      padding: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+
+    [data-navigation][data-enhanced='true'][data-open='true'] nav {
+      display: block;
+    }
+
+    [data-navigation][data-enhanced='true'] nav ul {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    [data-navigation][data-enhanced='true'] nav a {
+      display: flex;
+      min-height: 2.75rem;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  @media (min-width: 38rem) {
+    .brand-name {
+      display: inline;
+    }
+  }
+</style>

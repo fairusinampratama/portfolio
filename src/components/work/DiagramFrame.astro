@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const id = `diagram-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+---
+
+<figure class="diagram" aria-labelledby={id}>
+  <figcaption>
+    <strong id={id}>{title}</strong>
+    <span>{description}</span>
+  </figcaption>
+  <div class="diagram__body"><slot /></div>
+</figure>
+
+<style>
+  .diagram {
+    margin: var(--space-7) 0;
+    padding: clamp(var(--space-4), 3vw, var(--space-6));
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background:
+      linear-gradient(var(--color-surface-soft), var(--color-surface-soft)) padding-box,
+      var(--color-surface);
+  }
+
+  figcaption {
+    display: grid;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+  }
+
+  figcaption strong {
+    font-size: var(--step-1);
+  }
+
+  figcaption span {
+    max-width: 68ch;
+    color: var(--color-muted);
+  }
+</style>

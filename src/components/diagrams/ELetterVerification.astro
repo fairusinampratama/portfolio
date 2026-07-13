@@ -1,0 +1,30 @@
+---
+import FlowDiagram from './FlowDiagram.astro';
+
+const steps = [
+  {
+    title: 'Submit',
+    detail: 'An authorized role uploads a letter into the correspondence workflow.',
+  },
+  { title: 'Review', detail: 'Ordered roles inspect and approve the document according to scope.' },
+  { title: 'Hash', detail: 'The system calculates a SHA-256 representation of the document.' },
+  {
+    title: 'Sign',
+    detail: 'An ECDSA-based digital signature is associated with the signer and document.',
+  },
+  {
+    title: 'Embed',
+    detail: 'PDF processing adds QR-based access to the public verification record.',
+  },
+  {
+    title: 'Verify',
+    detail: 'The public check validates signature state and detects changed content.',
+  },
+] as const;
+---
+
+<FlowDiagram
+  title="Correspondence signing and verification"
+  description="Role approval, cryptographic signing, PDF processing, and public verification remain distinct steps."
+  steps={steps}
+/>

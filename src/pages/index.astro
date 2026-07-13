@@ -1,0 +1,339 @@
+---
+import { getCollection } from 'astro:content';
+import ButtonLink from '../components/core/ButtonLink.astro';
+import SectionHeading from '../components/core/SectionHeading.astro';
+import NetEngineArchitecture from '../components/diagrams/NetEngineArchitecture.astro';
+import ProjectCard from '../components/work/ProjectCard.astro';
+import SupportingProject from '../components/work/SupportingProject.astro';
+import { capabilities } from '../data/capabilities';
+import { experience } from '../data/experience';
+import { leadership } from '../data/leadership';
+import { site } from '../data/site';
+import { supportingWork } from '../data/supporting-work';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const leadProject = work[0];
+const secondaryProjects = work.slice(1);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <p class="eyebrow">Laravel backend ? Full-stack delivery</p>
+        <h1>{site.name}</h1>
+        <p class="hero__positioning">{site.positioning}</p>
+        <p class="lede">{site.introduction}</p>
+        <div class="button-row">
+          <ButtonLink href={withBase('/#selected-work')}>Explore selected work</ButtonLink>
+          <ButtonLink href={withBase('/#contact')} variant="secondary"
+            >Start a conversation</ButtonLink
+          >
+          {
+            site.cvUrl && (
+              <ButtonLink href={withBase(site.cvUrl)} variant="secondary">
+                View CV
+              </ButtonLink>
+            )
+          }
+        </div>
+      </div>
+      <aside class="hero__proof" aria-label="Engineering focus">
+        <p class="eyebrow">Engineering focus</p>
+        <ul>
+          <li>
+            <strong>Operational problems</strong><span
+              >Requirements translated into explicit workflows.</span
+            >
+          </li>
+          <li>
+            <strong>Connected systems</strong><span
+              >Payments, MikroTik, APIs, email, and WhatsApp.</span
+            >
+          </li>
+          <li>
+            <strong>Production delivery</strong><span
+              >Testing, CI/CD, deployment, and troubleshooting.</span
+            >
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--bordered" id="selected-work">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Selected work"
+        title="Systems that connect software decisions with real operations"
+        description="Four focused case studies show complementary evidence across product delivery, monitoring, billing, migration, document integrity, and deployment."
+      />
+      <div class="work-grid">
+        {leadProject && <ProjectCard entry={leadProject} lead />}
+        <div class="work-grid__secondary">
+          {secondaryProjects.map((entry) => <ProjectCard entry={entry} />)}
+        </div>
+        <SupportingProject item={supportingWork} />
+      </div>
+      <NetEngineArchitecture />
+    </div>
+  </section>
+
+  <section class="section section--bordered" id="experience">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Experience"
+        title="Application work grounded in operational environments"
+        description="Experience spans internal ISP systems, client application delivery, and approval-oriented business software."
+      />
+      <ol class="timeline">
+        {
+          experience.map((item) => (
+            <li class="timeline__item">
+              <div>
+                <p class="timeline__period">{item.period}</p>
+                <h3>{item.role}</h3>
+                <p class="timeline__organization">{item.organization}</p>
+              </div>
+              <p>{item.summary}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--bordered" id="capabilities">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Technical capabilities"
+        title="A backend foundation with enough full-stack range to deliver"
+        description="The emphasis is not a list of tools; it is the ability to connect data, workflows, integrations, and production operation."
+      />
+      <div class="capability-grid">
+        {
+          capabilities.map((group) => (
+            <article class="capability card">
+              <h3>{group.title}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--bordered" id="leadership">
+    <div class="container leadership-grid">
+      <SectionHeading
+        eyebrow="Leadership"
+        title="Structured communication beyond application code"
+        description="Organizational work adds evidence of documentation, mentoring, coordination, and responsibility."
+      />
+      <article class="leadership card">
+        <p class="eyebrow">{leadership.organization}</p>
+        <h3>{leadership.roles.join(' ? ')}</h3>
+        <p>{leadership.summary}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="container contact__inner">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Discuss a Laravel or business-systems role</h2>
+        <p>
+          Fairus is based in {site.location} and is interested in backend, backend-oriented full-stack,
+          application-development, and internal-tools opportunities.
+        </p>
+      </div>
+      <div class="button-row">
+        <ButtonLink href={`mailto:${site.email}`}>Email Fairus</ButtonLink>
+        <ButtonLink href={site.linkedin} variant="secondary">LinkedIn</ButtonLink>
+        <ButtonLink href={site.github} variant="secondary">GitHub</ButtonLink>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: clamp(var(--space-8), 10vw, var(--space-10));
+  }
+
+  .hero__grid,
+  .hero__content,
+  .hero__proof,
+  .work-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .hero__content {
+    align-content: center;
+    max-width: 49rem;
+  }
+
+  .hero h1 {
+    max-width: 13ch;
+  }
+
+  .hero__positioning {
+    max-width: 36ch;
+    font-size: var(--step-2);
+    font-weight: 750;
+    line-height: 1.3;
+  }
+
+  .hero__proof {
+    align-content: start;
+    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .hero__proof ul {
+    display: grid;
+    gap: var(--space-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .hero__proof li {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .hero__proof span,
+  .timeline__organization,
+  .timeline__item > p,
+  .leadership > p:last-child,
+  .contact p {
+    color: var(--color-muted);
+  }
+
+  .work-grid__secondary,
+  .capability-grid {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .timeline {
+    display: grid;
+    padding: 0;
+    list-style: none;
+  }
+
+  .timeline__item {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .timeline__period {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+  }
+
+  .timeline__item h3 {
+    margin-top: var(--space-2);
+  }
+
+  .timeline__organization {
+    margin-top: var(--space-1);
+  }
+
+  .capability,
+  .leadership {
+    padding: var(--space-6);
+  }
+
+  .capability ul {
+    margin-top: var(--space-4);
+  }
+
+  .capability li + li {
+    margin-top: var(--space-2);
+  }
+
+  .leadership-grid,
+  .contact__inner {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .leadership h3 {
+    margin-block: var(--space-3);
+  }
+
+  .contact {
+    background: var(--color-text);
+    color: white;
+  }
+
+  .contact .eyebrow,
+  .contact p {
+    color: #c6d8d6;
+  }
+
+  .contact__inner > div:first-child {
+    display: grid;
+    max-width: 46rem;
+    gap: var(--space-3);
+  }
+
+  .contact .button--secondary {
+    border-color: #c6d8d6;
+    color: white;
+  }
+
+  @media (min-width: 48rem) {
+    .work-grid__secondary,
+    .capability-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .timeline__item {
+      grid-template-columns: minmax(15rem, 0.8fr) 1.2fr;
+      gap: var(--space-7);
+    }
+  }
+
+  @media (min-width: 72rem) {
+    .hero__grid {
+      grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+      align-items: center;
+      gap: var(--space-9);
+    }
+
+    .work-grid__secondary,
+    .capability-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .leadership-grid,
+    .contact__inner {
+      grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+      align-items: center;
+    }
+
+    .contact__inner {
+      justify-content: space-between;
+    }
+
+    .contact__inner .button-row {
+      justify-content: flex-end;
+    }
+  }
+</style>

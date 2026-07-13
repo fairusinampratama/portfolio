@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import StatusBadge from '../core/StatusBadge.astro';
+import TagList from '../core/TagList.astro';
+import ProjectLinks from './ProjectLinks.astro';
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+}
+
+const { entry } = Astro.props;
+---
+
+<header class="case-hero">
+  <div class="container">
+    <a class="back-link" href={import.meta.env.BASE_URL}>? Back to portfolio</a>
+    <div class="case-hero__grid">
+      <div class="case-hero__main">
+        <p class="eyebrow">{entry.data.domain}</p>
+        <h1>{entry.data.displayTitle}</h1>
+        <p class="lede">{entry.data.summary}</p>
+        <ProjectLinks links={entry.data.links} />
+      </div>
+      <aside class="case-hero__rail" aria-label="Project summary">
+        <StatusBadge status={entry.data.status} />
+        <div>
+          <strong>Professional claim</strong>
+          <p>{entry.data.professionalClaim}</p>
+        </div>
+        <TagList items={entry.data.technologies} />
+      </aside>
+    </div>
+  </div>
+</header>
+
+<style>
+  .case-hero {
+    padding-block: var(--space-7) clamp(var(--space-8), 8vw, var(--space-10));
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .back-link {
+    display: inline-flex;
+    margin-bottom: var(--space-7);
+    font-size: var(--step--1);
+    font-weight: 700;
+  }
+
+  .case-hero__grid,
+  .case-hero__main,
+  .case-hero__rail {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .case-hero__main h1 {
+    max-width: 15ch;
+  }
+
+  .case-hero__rail {
+    align-content: start;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .case-hero__rail strong {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-size: var(--step--1);
+  }
+
+  .case-hero__rail p {
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 72rem) {
+    .case-hero__grid {
+      grid-template-columns: minmax(0, var(--reading)) var(--rail);
+      justify-content: space-between;
+      gap: var(--space-8);
+    }
+  }
+</style>

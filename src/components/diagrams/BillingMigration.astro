@@ -1,0 +1,24 @@
+---
+import FlowDiagram from './FlowDiagram.astro';
+
+const steps = [
+  { title: 'Extract', detail: 'Gather source records through controlled scripts and exports.' },
+  { title: 'Normalize', detail: 'Standardize identifiers, values, and formats.' },
+  {
+    title: 'Relate',
+    detail: 'Map customers, subscriptions, packages, invoices, and router records.',
+  },
+  {
+    title: 'Reconcile',
+    detail: 'Flag duplicates, missing relations, and conflicting values for review.',
+  },
+  { title: 'Import', detail: 'Load accepted data into relational application structures.' },
+  { title: 'Verify', detail: 'Compare staged and application records before operational use.' },
+] as const;
+---
+
+<FlowDiagram
+  title="Legacy-data migration and reconciliation"
+  description="More than 3,000 source records passed through a reviewable pipeline; the source count is not an active-customer total."
+  steps={steps}
+/>

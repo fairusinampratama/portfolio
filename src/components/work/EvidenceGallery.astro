@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  evidence: CollectionEntry<'work'>['data']['evidence'];
+}
+
+const { evidence } = Astro.props;
+---
+
+{
+  evidence.length > 0 && (
+    <section class="evidence" aria-labelledby="visual-evidence-title">
+      <h2 id="visual-evidence-title">Visual evidence</h2>
+      <div class="evidence-grid">
+        {evidence.map((item) => (
+          <figure>
+            <Image
+              src={item.image}
+              alt={item.alt}
+              widths={[640, 960, 1440]}
+              sizes="(min-width: 72rem) 46rem, 100vw"
+              formats={['avif', 'webp']}
+              loading="lazy"
+            />
+            <figcaption>{item.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .evidence {
+    margin-top: var(--space-9);
+  }
+
+  .evidence-grid {
+    display: grid;
+    gap: var(--space-6);
+    margin-top: var(--space-5);
+  }
+
+  figure {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  figcaption {
+    padding: var(--space-4);
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+</style>

@@ -1,0 +1,50 @@
+---
+import type { supportingWork } from '../../data/supporting-work';
+import TagList from '../core/TagList.astro';
+
+interface Props {
+  item: typeof supportingWork;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="supporting card">
+  <div>
+    <p class="eyebrow">{item.label}</p>
+    <h3>{item.title}</h3>
+  </div>
+  <p>{item.summary}</p>
+  <TagList items={item.technologies} />
+  <a href={item.repository}>Inspect public repository <span aria-hidden="true">?</span></a>
+</article>
+
+<style>
+  .supporting {
+    display: grid;
+    gap: var(--space-5);
+    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    border-left: 0.3rem solid var(--color-accent);
+  }
+
+  .supporting h3 {
+    margin-top: var(--space-2);
+  }
+
+  .supporting > p {
+    max-width: 68ch;
+    color: var(--color-muted);
+  }
+
+  .supporting > a {
+    width: fit-content;
+    font-weight: 750;
+  }
+
+  @media (min-width: 72rem) {
+    .supporting {
+      grid-template-columns: 0.8fr 1.5fr 1fr auto;
+      align-items: center;
+    }
+  }
+</style>

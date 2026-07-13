@@ -1,0 +1,40 @@
+---
+interface Props {
+  links: {
+    live?: string;
+    repository?: string;
+    officialRecord?: string;
+  };
+}
+
+const { links } = Astro.props;
+const items = [
+  links.live && ['Open deployed application', links.live],
+  links.repository && ['Inspect public repository', links.repository],
+  links.officialRecord && ['Read official thesis record', links.officialRecord],
+].filter(Boolean) as [string, string][];
+---
+
+{
+  items.length > 0 && (
+    <div class="project-links" aria-label="Project links">
+      {items.map(([label, href]) => (
+        <a href={href}>
+          {label} <span aria-hidden="true">?</span>
+        </a>
+      ))}
+    </div>
+  )
+}
+
+<style>
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+  }
+
+  .project-links a {
+    font-weight: 750;
+  }
+</style>
