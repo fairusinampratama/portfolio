@@ -1,0 +1,10 @@
+node_modules
+dist
+.astro
+playwright-report
+test-results
+.lighthouseci
+docs
+references
+package-lock.json
+public/og-default.png
