@@ -1,0 +1,72 @@
+---
+title: 'TinggalJalan'
+displayTitle: 'TinggalJalan'
+order: 1
+status: 'live-production'
+summary: 'A multilingual travel booking and operations platform connecting public discovery, booking, payment, communication, and administration.'
+professionalClaim: 'Demonstrates end-to-end product delivery across Laravel architecture, a React interface, operational workflows, external integrations, and production deployment.'
+domain: 'Travel booking and operations'
+technologies:
+  - 'Laravel'
+  - 'React'
+  - 'Inertia'
+  - 'Filament'
+  - 'MySQL'
+  - 'Midtrans'
+  - 'GitHub Actions'
+capabilities:
+  - 'Booking workflow design'
+  - 'Payment integration'
+  - 'Email and WhatsApp communication'
+  - 'CI/CD and atomic deployment'
+links:
+  live: 'https://tinggaljalan.com'
+seo:
+  title: 'TinggalJalan case study'
+  description: 'How Fairus built a multilingual Laravel and React travel booking platform with payments, operational workflows, communications, and CI/CD.'
+evidence: []
+---
+
+import BookingLifecycle from '../../components/diagrams/BookingLifecycle.astro';
+import DeploymentPipeline from '../../components/diagrams/DeploymentPipeline.astro';
+
+## Context and operational problem
+
+Travel booking is more than a checkout form. Package discovery, traveller counts, availability, pricing, payment, customer communication, and internal administration must remain consistent as a booking moves forward.
+
+TinggalJalan brings those concerns into one multilingual product. The public experience is available in Indonesian, English, and Simplified Chinese, while the administrative side supports package content, availability, pricing, bookings, and communication settings.
+
+## Deployment boundary
+
+The application is live in production. This case study does not claim traffic, booking volume, revenue, conversion, or customer counts.
+
+## Requirements and constraints
+
+The system needed to preserve the commercial context of a booking even when package content or pricing changed later. Booking records therefore retain relevant snapshots instead of relying only on mutable catalogue data.
+
+Traveller ranges also affect the workflow. Standard groups can continue through configured pricing, while groups beyond the available tiers are directed to a consultation path rather than receiving an invented price.
+
+<BookingLifecycle />
+
+## Architecture and integrations
+
+Laravel coordinates business rules, persistence, validation, payment state, and communication. React and Inertia provide the public booking interface, while Filament supplies focused administrative workflows. MySQL stores the relational product, availability, booking, pricing, and operational records.
+
+Midtrans handles the payment step. Email and WhatsApp support payment requests and post-payment communication without making either channel the system of record.
+
+## Engineering decisions
+
+- Store booking and pricing context as snapshots where later catalogue edits must not rewrite history.
+- Treat custom group arrangements as a separate workflow rather than forcing them through standard checkout.
+- Keep operational configuration in dedicated administration areas instead of embedding credentials in code.
+- Model booking progress as explicit states that can be inspected and managed.
+
+<DeploymentPipeline />
+
+## Delivery and reliability
+
+The delivery pipeline runs automated tests and frontend builds before creating an immutable release artifact. Deployment uses database backup, health verification, an atomic release switch, and a rollback path. These controls reduce the number of manual, stateful steps required during release.
+
+## What this demonstrates
+
+TinggalJalan is the broadest evidence in this portfolio: a complete Laravel product that connects public user experience, relational workflow design, payments, communications, administration, testing, and production delivery.

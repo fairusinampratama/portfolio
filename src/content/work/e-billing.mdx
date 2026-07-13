@@ -1,0 +1,71 @@
+---
+title: 'Skynet E-Billing'
+displayTitle: 'E-Billing'
+order: 3
+status: 'deployed-limited-adoption'
+summary: 'A deployed ISP billing platform covering customer, invoice, payment, communication, router synchronization, and connection-control workflows.'
+professionalClaim: 'Demonstrates complex workflow design, MikroTik integration, legacy-data reconciliation, and honest handling of adoption limits.'
+domain: 'ISP billing and customer operations'
+technologies:
+  - 'Laravel'
+  - 'React'
+  - 'Inertia'
+  - 'MySQL'
+  - 'Redis'
+  - 'MikroTik'
+  - 'WhatsApp'
+capabilities:
+  - 'Billing and invoice workflows'
+  - 'Payment recording'
+  - 'Router synchronization'
+  - 'Legacy-data migration'
+links:
+  live: 'https://billing.sky.net.id'
+  repository: 'https://github.com/fairusinampratama/skynet-ebilling'
+seo:
+  title: 'Skynet E-Billing case study'
+  description: 'A deployed Laravel ISP billing system with invoices, payments, MikroTik automation, WhatsApp communication, and legacy-data migration.'
+evidence: []
+---
+
+import BillingMigration from '../../components/diagrams/BillingMigration.astro';
+
+## Context and operational problem
+
+ISP billing connects financial records with customer subscriptions, communication, and network access. A billing application therefore needs clear state transitions and safeguards around invoice changes, payments, isolation, reconnection, and router synchronization.
+
+E-Billing was designed to centralize those workflows while also preparing legacy information for a relational data model.
+
+## Deployment and adoption boundary
+
+The application was deployed and technically completed, but it was **not fully adopted as the company's replacement billing platform**. Deployment and technical completion are not presented as complete organizational adoption.
+
+## Workflow and relational design
+
+Customer, subscription, package, invoice, payment, router, and communication records have different lifecycles. The design keeps those concerns related without collapsing them into one status field.
+
+Connection-control actions are tied to explicit customer and payment state. Router synchronization also stages differences for review rather than assuming that a router record and an application record are automatically equivalent.
+
+<BillingMigration />
+
+## Migration and reconciliation
+
+Migration work processed **more than 3,000 source records**. This figure describes source records handled during extraction, cleaning, mapping, and reconciliation. It does not mean 3,000 active customers, 3,000 final clean records, or 3,000 users of the deployed application.
+
+The migration path used scripts to gather legacy information, normalize inconsistent values, map relationships, identify duplicates or conflicts, and prepare reviewed imports.
+
+## Integrations and delivery
+
+The platform covered manual and gateway-oriented payment workflows, generated invoices, customer communication through WhatsApp, MikroTik isolation and reconnection, and router synchronization. Redis-backed queues and deployment configuration supported background processing and production operation.
+
+## Engineering decisions
+
+- Keep invoice, payment, and connection state explicit and auditable.
+- Serialize network-enforcement work through dedicated queues.
+- Reconcile router-only and application-only records before changing either side.
+- Treat legacy migration as a reviewable data pipeline.
+- Keep credentials and production data outside the repository.
+
+## What this demonstrates
+
+E-Billing shows Fairus working across financial workflow design, relational data, external network operations, background processing, migration, and deployment?while distinguishing technical completion from adoption.

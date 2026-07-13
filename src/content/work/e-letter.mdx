@@ -1,0 +1,66 @@
+---
+title: 'E-Letter ? Undergraduate Thesis'
+displayTitle: 'E-Letter'
+order: 4
+status: 'deployed-thesis'
+summary: 'A deployed Laravel 12 undergraduate thesis application for role-based correspondence, ECDSA-based digital signatures, integrity checking, and public verification.'
+professionalClaim: 'Demonstrates requirements research, role-based workflow design, document processing, applied cryptography, and structured testing.'
+domain: 'Institutional correspondence and document verification'
+technologies:
+  - 'Laravel 12'
+  - 'Livewire'
+  - 'MySQL'
+  - 'ECDSA'
+  - 'SHA-256'
+  - 'QR codes'
+  - 'PDF processing'
+capabilities:
+  - 'Role-based correspondence'
+  - 'Digital-signature workflow'
+  - 'Document integrity verification'
+  - 'Black-box testing'
+links:
+  live: 'https://eletter.mapalatursina.my.id'
+  repository: 'https://github.com/fairusinampratama/eletter'
+  officialRecord: 'https://etheses.uin-malang.ac.id/76580/'
+seo:
+  title: 'E-Letter undergraduate thesis case study'
+  description: 'A Laravel 12 correspondence system using role workflows, ECDSA-based digital signatures, SHA-256 integrity checks, QR verification, and structured testing.'
+evidence: []
+---
+
+import ELetterVerification from '../../components/diagrams/ELetterVerification.astro';
+
+## Undergraduate thesis context
+
+**Official title:** ?Sistem informasi persuratan digital unit kegiatan mahasiswa di Universitas Islam Negeri Maulana Malik Ibrahim Malang?
+
+E-Letter is Fairus's deployed undergraduate thesis application at Universitas Islam Negeri Maulana Malik Ibrahim Malang. The research addressed manual letter administration in student activity units, including document loss risk, slow processes, weak security, and weak authentication.
+
+## Deployment boundary
+
+The application is deployed. Its role in this portfolio is both technical and academic: it demonstrates a researched problem, documented methodology, implementation, and testing. It is not presented as a university-wide institutional platform.
+
+## Requirements and workflow
+
+The application supports structured correspondence across six roles. Access rules limit users to relevant organizational or committee records, while letters progress through ordered review and signature stages.
+
+Laravel 12 provides the application foundation, Livewire supports the role-oriented interfaces, and the relational model connects institutions, committees, users, roles, letter categories, submissions, and signature state.
+
+<ELetterVerification />
+
+## Digital signatures and integrity
+
+The system implements **ECDSA-based digital signatures**. During signing, it calculates a SHA-256 representation of the document and produces a signature associated with the signer. QR-based public verification connects a document to its verification record, while integrity checks detect changed document content.
+
+This is more precise than describing the feature as generic PDF signing: PDF processing carries the document through the workflow, while ECDSA and SHA-256 provide signature and integrity mechanisms.
+
+## Methodology and testing
+
+The thesis used a Waterfall development approach covering analysis, design, implementation, and testing. Black-box cases exercised functional workflows, and separate ECDSA scenarios covered signing and verification behavior, including invalid signatures and changed document content.
+
+The thesis recommends future work such as automatic notifications, letter templates, and broader archival integration. Those are future directions rather than completed functionality.
+
+## What this demonstrates
+
+E-Letter shows Fairus moving from stakeholder and research context to relational workflow design, Laravel implementation, document processing, applied cryptography, public verification, and structured validation.

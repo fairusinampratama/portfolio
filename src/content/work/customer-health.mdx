@@ -1,0 +1,66 @@
+---
+title: 'Skynet Customer Health'
+displayTitle: 'Customer Health'
+order: 2
+status: 'operational'
+summary: 'An operational monitoring system for scheduled connectivity checks, dashboards, reporting, retention, and maintenance support.'
+professionalClaim: 'Demonstrates the ability to turn repetitive network observations into a maintainable operational workflow.'
+domain: 'ISP operations and connectivity monitoring'
+technologies:
+  - 'Laravel'
+  - 'Filament'
+  - 'MySQL'
+  - 'Laravel Scheduler'
+  - 'Queue workers'
+  - 'WhatsApp'
+capabilities:
+  - 'Scheduled monitoring'
+  - 'Operational dashboards'
+  - 'Reporting and retention'
+  - 'Database indexing'
+links:
+  live: 'https://monitoring.sky.net.id'
+  repository: 'https://github.com/fairusinampratama/skynet-customer-health'
+seo:
+  title: 'Skynet Customer Health case study'
+  description: 'An operational Laravel monitoring system using scheduled checks, dashboards, reporting, retention, and database optimization.'
+evidence: []
+---
+
+import MonitoringLoop from '../../components/diagrams/MonitoringLoop.astro';
+
+## Context and operational problem
+
+Connectivity information becomes useful only when it is collected consistently and presented in a form that supports action. Manual checks make it difficult to distinguish a current interruption from a planned isolation, retain useful history, or prepare recurring reports.
+
+Customer Health centralizes scheduled customer and server checks, current status, operational dashboards, reports, and bounded history.
+
+## Deployment and use boundary
+
+The system was deployed and used operationally. Its reports supported maintenance and technician-related decisions.
+
+The work took place in an ISP environment with **1,100+ active customer accounts**. That figure describes the wider operational environment; it is not presented as the number of monitored records, imported rows, or retained health samples.
+
+<MonitoringLoop />
+
+## Workflow and data considerations
+
+Scheduled tasks gather connectivity observations at defined intervals. Current health and historical observations serve different needs, so the data model separates the latest operational view from time-series records used for diagnosis and reporting.
+
+Isolation state is represented explicitly so planned maintenance or non-service states do not create misleading alerts. Retention rules remove detailed historical records after their useful window, while indexes support the queries used repeatedly by dashboards and reports.
+
+## Engineering decisions
+
+- Use the Laravel scheduler for repeatable monitoring orchestration.
+- Keep isolation state separate from connectivity state.
+- Bound detailed history with automatic retention.
+- Optimize around recurring dashboard and reporting queries.
+- Generate WhatsApp reports from stored system state rather than manual compilation.
+
+## Delivery and operational use
+
+The system combines an administrative interface with dedicated display views for ongoing operational visibility. Scheduled checks, queue workers, pruning, and reporting require the application runtime and background processes to be deployed as one operational system.
+
+## What this demonstrates
+
+Customer Health shows how Fairus translates a repetitive technical activity into a relational workflow with scheduling, useful state boundaries, reporting, database maintenance, and operational presentation.
