@@ -11,5 +11,5 @@ export const site = {
   linkedin: 'https://www.linkedin.com/in/fairusinampratama',
   cvUrl: undefined as string | undefined,
   defaultDescription:
-    'Portfolio of Fairus In?am Pratama, a Laravel backend and full-stack developer focused on operational systems, integrations, and production delivery.',
+    "Portfolio of Fairus In'am Pratama, a Laravel backend and full-stack developer focused on operational systems, integrations, and production delivery.",
 } as const;

@@ -36,7 +36,7 @@ const { entry, nextEntry } = Astro.props;
     <span>Next case study</span>
     <a href={withBase(`/work/${nextEntry.id}/`)}>
       {nextEntry.data.displayTitle}
-      <span aria-hidden="true">?</span>
+      <span aria-hidden="true">&rarr;</span>
     </a>
   </nav>
 </BaseLayout>

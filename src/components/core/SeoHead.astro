@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { title, description, canonicalPath = Astro.url.pathname, type = 'website' } = Astro.props;
-const fullTitle = title === siteData.name ? title : `${title} ? ${siteData.name}`;
+const fullTitle = title === siteData.name ? title : `${title} \u00b7 ${siteData.name}`;
 const canonical = new URL(
   withBase(canonicalPath.replace(import.meta.env.BASE_URL, '/')),
   Astro.site,
@@ -53,7 +53,7 @@ const jsonLd =
 <meta property="og:image:height" content="630" />
 <meta
   property="og:image:alt"
-  content="Fairus In'am Pratama ? Laravel Backend / Full-Stack Developer"
+  content={"Fairus In'am Pratama \u00b7 Laravel Backend / Full-Stack Developer"}
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />

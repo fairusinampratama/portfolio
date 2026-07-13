@@ -2,14 +2,14 @@ export const experience = [
   {
     organization: 'PT Skynet Lintas Nusantara',
     role: 'Full-Stack Web Developer',
-    period: 'January ? June 2026',
+    period: 'January \u2013 June 2026',
     summary:
       'Built and deployed internal ISP systems spanning connectivity monitoring, billing workflows, MikroTik automation, legacy-data migration, and operational troubleshooting.',
   },
   {
     organization: 'Jobnation IT Outsource',
     role: 'Full-Stack Web & Mobile Developer Intern',
-    period: 'October ? November 2025',
+    period: 'October \u2013 November 2025',
     summary:
       'Contributed to Laravel and Flutter client work through bug fixes, ticket delivery, user-interface implementation, and REST API development.',
   },

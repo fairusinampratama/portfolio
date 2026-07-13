@@ -12,9 +12,11 @@ test('homepage presents the approved project depth', async ({ page }) => {
 test('approved status language is public', async ({ page }) => {
   await page.goto('');
   await expect(page.getByText('Live production application', { exact: true })).toBeVisible();
-  await expect(page.getByText('Deployed ? Used operationally', { exact: true })).toBeVisible();
+  await expect(page.getByText('Deployed \u00b7 Used operationally', { exact: true })).toBeVisible();
   await expect(
-    page.getByText('Deployed ? Technically completed ? Not fully adopted', { exact: true }),
+    page.getByText('Deployed \u00b7 Technically completed \u00b7 Not fully adopted', {
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(page.getByText('Deployed undergraduate thesis', { exact: true })).toBeVisible();
 });
