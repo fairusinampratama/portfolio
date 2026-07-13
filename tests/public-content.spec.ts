@@ -6,7 +6,7 @@ test('homepage presents the approved project depth', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Skynet NetEngine API' })).toBeVisible();
   await expect(page.locator('a[href*="/work/skynet-net-engine-api/"]')).toHaveCount(0);
   await expect(page.getByText('Saleskit', { exact: false })).toHaveCount(0);
-  await expect(page.getByRole('link', { name: /View CV/i })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: /View CV/i })).toHaveCount(1);
 });
 
 test('approved status language is public', async ({ page }) => {

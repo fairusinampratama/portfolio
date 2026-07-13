@@ -63,7 +63,7 @@ Laravel 12 provides the application foundation, Livewire supports the role-orien
 
 ## Digital signatures and integrity
 
-The system implements **ECDSA-based digital signatures**. During signing, it calculates a SHA-256 representation of the document and produces a signature associated with the signer. QR-based public verification connects a document to its verification record, while integrity checks detect changed document content.
+The system implements **ECDSA-based digital signatures** and **SHA-256 integrity checks**. During signing, it calculates a SHA-256 hash of the document and produces a signature associated with the signer. QR-based public verification connects a document to its verification record; SHA-256 integrity checks detect any change in document content after signing.
 
 This is more precise than describing the feature as generic PDF signing: PDF processing carries the document through the workflow, while ECDSA and SHA-256 provide signature and integrity mechanisms.
 
