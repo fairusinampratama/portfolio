@@ -23,5 +23,5 @@ test('case studies provide circular next navigation', async ({ page }) => {
   await page.goto('work/e-letter/');
   await expect(
     page.getByRole('navigation', { name: 'Next case study' }).getByRole('link'),
-  ).toHaveAttribute('href', '/portfolio/work/tinggaljalan/');
+  ).toHaveAttribute('href', '/work/tinggaljalan/');
 });

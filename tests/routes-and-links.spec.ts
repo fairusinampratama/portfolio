@@ -24,7 +24,7 @@ test('unknown routes render the not-found page', async ({ page }) => {
 test('all internal links resolve', async ({ page, request }) => {
   await page.goto('');
   const hrefs = await page
-    .locator('a[href^="/portfolio/"]')
+    .locator('a[href^="/"]')
     .evaluateAll((links) => [...new Set(links.map((link) => (link as HTMLAnchorElement).href))]);
 
   for (const href of hrefs) {

@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 const site = process.env.SITE_URL ?? 'https://fairusinampratama.github.io';
-const base = process.env.BASE_PATH ?? '/portfolio';
+const base = process.env.BASE_PATH ?? '/';
 
 export default defineConfig({
   site,
