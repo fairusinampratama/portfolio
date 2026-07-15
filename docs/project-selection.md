@@ -1,5 +1,7 @@
 # Project Selection
 
+> **Approved scope baseline:** Portfolio V1 implements this selection: four full case studies, NetEngine as supporting evidence, and no Saleskit portfolio card. Use [`current-status.md`](current-status.md) for current delivery status. New projects still require explicit approval and a distinct professional claim.
+
 ## Evaluation method
 
 Projects are ranked by recruiter relevance, evidence strength, distinctiveness, status clarity, privacy risk, and overlap. “Presentation depth” means portfolio treatment, not a judgment of code quality.

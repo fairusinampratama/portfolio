@@ -1,5 +1,7 @@
 # Decisions and TODOs
 
+> **Planning record:** Portfolio V1 has been implemented and deployed. This file preserves the original decision process; unresolved historical entries are not active work unless carried forward in [`current-status.md`](current-status.md).
+
 This is the control sheet for the planning-to-implementation handoff. `BLOCKING` items must be resolved before the dependent phase.
 
 ## Codex recommendations

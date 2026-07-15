@@ -1,5 +1,7 @@
 # Screenshot Capture Guide
 
+> **Active safety guidance:** Portfolio V1 is deployed, but this privacy and capture guidance remains mandatory for every future or replacement screenshot. Use [`current-status.md`](current-status.md) for implementation status.
+
 ## Before capturing
 
 Do not capture anything yet. This guide becomes active only after Fairus approves the project selection and content boundaries.

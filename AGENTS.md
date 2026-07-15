@@ -1,5 +1,13 @@
 # Portfolio Repository Rules
 
+## Current implementation status
+
+- Portfolio V1 is approved, implemented, public, and deployed at `https://fairusinampratama.github.io/`.
+- The current homepage, four full case studies, NetEngine supporting entry, published copy, and sanitized evidence set are the approved baseline.
+- GitHub, LinkedIn, Glints, JobStreet, and other job-profile integration was confirmed complete by Fairus on 15 July 2026.
+- `docs/current-status.md` is the source of truth for delivery status. Older documents in `docs/` record the planning rationale; an unresolved item there is not active work unless it is carried forward in `docs/current-status.md`.
+- Future work should maintain and improve the approved implementation. Do not restart discovery or scaffolding unless Fairus explicitly requests a redesign or new version.
+
 ## Purpose and audience
 
 - Build a concise, recruiter-oriented argument for interviewing Fairus In'am Pratama for Laravel backend, PHP backend, backend-oriented full-stack, application-development, and internal-tools roles.
@@ -32,7 +40,7 @@
 - Keep prose concise. Avoid a repository catalog, exhaustive skill lists, unsupported superlatives, and repeated ISP claims.
 - Project scope is controlled by `docs/project-selection.md`; do not add projects without explicit approval and a distinct professional claim.
 - Do not add a blog, CMS, login, portfolio admin panel, testimonials, skill percentages, progress bars, GitHub-stat widgets, or excessive animation unless explicitly approved later.
-- Do not present final case-study copy until factual content and evidence have been approved.
+- Treat the currently published case-study copy and evidence as approved. New or materially changed claims still require factual confirmation and an approved source.
 
 ## Repository handling
 
@@ -40,8 +48,8 @@
 - Never modify source repositories or live applications from this repository's workflow.
 - Never commit anything inside `references/`. Keep `/references/` ignored by Git and verify the ignore rule before commits.
 - Do not commit credentials, production data, unredacted screenshots, temporary evidence exports, or internal documents.
-- Do not scaffold or implement the portfolio until Fairus explicitly approves the planning documents and authorizes implementation.
-- Before making the repository public, complete the factual, privacy, licensing, link, and secret-history checks defined in `docs/implementation-plan.md`.
+- The repository is already implemented and public. Preserve the current architecture and scope unless Fairus authorizes a material change.
+- Before each future production release, rerun the applicable factual, privacy, asset, link, and secret checks; do not assume the original approval covers newly added material.
 
 ## Quality gates
 

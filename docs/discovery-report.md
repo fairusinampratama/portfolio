@@ -1,5 +1,7 @@
 # Discovery Report
 
+> **Planning record:** Portfolio V1 has been implemented and deployed. This file preserves the original discovery context; historical gaps and TODOs are not active work unless carried forward in [`current-status.md`](current-status.md).
+
 ## Scope and evidence reviewed
 
 Discovery was performed on 13 July 2026 using:

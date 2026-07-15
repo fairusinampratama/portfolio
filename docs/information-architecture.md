@@ -1,5 +1,7 @@
 # Information Architecture
 
+> **Implemented planning baseline:** Portfolio V1 substantially implements this structure and is deployed. Use [`current-status.md`](current-status.md) for accepted simplifications and current delivery status.
+
 ## Recommended format
 
 Use a focused homepage plus separate case-study pages. The homepage should make the interview argument in under two minutes; case-study pages should answer technical follow-up questions without making the homepage heavy.

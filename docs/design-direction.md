@@ -1,5 +1,7 @@
 # Design Direction
 
+> **Implemented planning baseline:** Portfolio V1 follows this visual direction and is deployed. Use [`current-status.md`](current-status.md) for delivery status; retain these principles for future changes unless a redesign is explicitly approved.
+
 ## Design objective
 
 The visual system should communicate calm competence: structured enough for business systems, technical enough for engineering review, and restrained enough that evidence—not effects—carries the portfolio.

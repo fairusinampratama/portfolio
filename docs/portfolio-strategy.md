@@ -1,5 +1,7 @@
 # Portfolio Strategy
 
+> **Implemented planning baseline:** Portfolio V1 is deployed and continues to use this recruiter-oriented strategy. Use [`current-status.md`](current-status.md) for current delivery status and accepted simplifications.
+
 ## Exact job of the portfolio
 
 The portfolio's job is to earn a qualified engineering interview. It should make a recruiter confident that Fairus can take an operational or business problem, model its data and workflow, build the Laravel application and integrations, ship it safely, and explain the trade-offs honestly.

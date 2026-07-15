@@ -1,5 +1,7 @@
 # Content Requirements
 
+> **Planning record:** Portfolio V1 has been implemented and deployed. This file preserves the original content plan; historical TODOs are not active work unless carried forward in [`current-status.md`](current-status.md). Accuracy and privacy constraints remain applicable to future content.
+
 This document defines what must be prepared. It intentionally does not contain final case-study copy.
 
 ## Voice and editorial rules

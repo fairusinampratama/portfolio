@@ -1,5 +1,7 @@
 # Technical Direction
 
+> **Implemented planning baseline:** Portfolio V1 uses the recommended Astro and TypeScript static architecture and is deployed on the approved GitHub Pages alternative. Use [`current-status.md`](current-status.md) for current delivery status.
+
 ## Requirements
 
 The site needs static deployment, fast first load, strong metadata, accessible HTML, four case-study routes, maintainable structured content, responsive images, diagrams, link checks, and minimal operational cost. It does not need authentication, a database, runtime APIs, a CMS, server actions, or extensive client state.

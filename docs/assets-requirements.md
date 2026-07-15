@@ -1,5 +1,7 @@
 # Assets Requirements
 
+> **Planning record:** Portfolio V1 has been implemented and deployed. This file preserves the original asset plan; historical TODOs are not active work unless carried forward in [`current-status.md`](current-status.md). Its privacy constraints remain applicable to future assets.
+
 ## Asset principles
 
 - Every asset must prove one distinct claim; decorative screenshots are excluded.

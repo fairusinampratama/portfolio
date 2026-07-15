@@ -1,5 +1,7 @@
 # Implementation Plan
 
+> **Planning record:** Portfolio V1 has been implemented and deployed. This file preserves the original phased plan; its pre-implementation instructions and unchecked items are not active work unless carried forward in [`current-status.md`](current-status.md).
+
 No implementation begins until Phase 0 is explicitly approved.
 
 ## Phase 0 — Discovery approval
